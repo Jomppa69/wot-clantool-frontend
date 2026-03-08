@@ -1,0 +1,16 @@
+@mixin buttons() {
+    button {
+        color: white;
+        font-weight: bold;
+        background-color: var(--color-header);
+        &:hover {
+            background-color: var(--color-header-light);
+            color: rgb(73, 73, 73);
+        }
+        border: none;
+        border-radius: var(--border-radius-md);
+        padding: 5px 7px;
+        height: fit-content;
+        cursor: pointer;
+    }
+}

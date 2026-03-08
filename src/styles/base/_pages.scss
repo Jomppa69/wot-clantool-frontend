@@ -1,0 +1,12 @@
+// This file contains the page mixin, which is used to style the pages of the application.
+
+@mixin popup-page() {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 100%;
+  max-width: var(--page-width-sm);
+  padding: var(--layout-padding);
+  margin-top: 10px;
+}

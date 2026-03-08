@@ -1,0 +1,61 @@
+@use 'base/pages';
+
+:host {
+    @include pages.popup-page;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-lg);
+}
+
+.clan-selector {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.search {
+    margin: 3%;
+    padding: 10px;
+
+    input {
+        font-size: var(--font-size-md);
+        padding: 4px 3px;
+        border-radius: var(--border-radius-md);
+        border: 1px solid var(--color-grey-light);
+        padding-right: 24px;
+    }
+
+    button {
+        font-size: var(--font-size-md);
+        margin-left: -64px;
+    }
+}
+
+.results {
+    align-items: center;
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+.clan-item {
+    background-color: var(--color-main-background);
+    padding: 5px;
+    border-radius: var(--border-radius-md);
+    width: 350px;
+
+    .clan-emblem {
+        width: 70px;
+        height: 70px;
+    }
+
+    .clan-info {
+        .name {
+            font-size: var(--font-size-md);
+            padding: 3px;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .details {
+            font-size: var(--font-size-xs);
+        }
+    }
+}

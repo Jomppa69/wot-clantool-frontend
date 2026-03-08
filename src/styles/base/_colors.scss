@@ -1,0 +1,12 @@
+@mixin colors() {
+    :root {
+        --color-main-background: #494D5F;
+        --color-background: #E5EAF5;
+        --color-accent: #A0D2EB;
+        --color-header: #8458b3;
+        --color-header-light: #D0BDF4;
+        --color-header-dark: #4d3269;
+
+        --color-grey-light: #b6b6b6;
+    }
+}

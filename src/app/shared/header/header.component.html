@@ -1,0 +1,32 @@
+<div class="header-container flex align-center-center">
+    <div class="header-content flex align-center-space-between">
+
+        <div class="title flex align-center-center">
+            <span class="title-text">Joinzers clan tool</span>
+        </div>
+
+        <div class="navbar flex align-center-center flex-gap-50">
+            <span class="navbar-link" (click)="navTo('clan')">Overview</span>
+            <span class="navbar-link" (click)="navTo('members')">Members</span>
+            <span class="navbar-link" (click)="navTo('tanks')">Tanks</span>
+            <span class="navbar-link" (click)="navTo('attendance')">Attendance</span>
+
+
+        </div>
+
+        <div class="clan-info-container flex align-center-start">
+            @if (clanService.clan$ | async; as clan) {
+                <div class="clan flex align-center-start flex-gap-10" [style.backgroundColor]="clan.color">
+                    <img class="clan-emblem" [src]="clan.emblems.x195?.portal" alt="{{ clan.name }} emblem">
+                    <span class="clan-name" (click)="navTo('select-clan')">{{ clan.name }}</span>
+                </div>
+
+            } @else {
+                <div class="no-clan flex flex-gap-10 align-center-center">
+                    <span>No clan selected!</span>
+                    <button class="header-button" (click)="navTo('select-clan')">Select clan</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

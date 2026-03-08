@@ -1,0 +1,16 @@
+@use 'base/border-radius';
+@use 'base/colors';
+@use 'base/flex';
+@use 'base/font';
+@use 'base/reset';
+@use 'base/variables';
+@use 'components/buttons';
+
+// base styles and variables
+@include colors.colors;
+@include flex.flex;
+@include reset.reset;
+@include variables.variables;
+
+// components
+@include buttons.buttons;

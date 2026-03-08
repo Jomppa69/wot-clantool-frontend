@@ -1,0 +1,23 @@
+<main class="clan-selector flex-column">
+    <div class="search">
+        <input type="text" placeholder="Search for a clan" maxlength="20" [formControl]="clanName" (keydown.enter)="searchClan()">
+        <button (click)="searchClan()">Search</button>
+    </div>
+
+    @if (results.length > 0) {
+        <div class="results flex-column flex-gap-8">
+            @for (clan of results; track clan.clan_id) {
+                <div class="flex flex-gap-10 align-center-start">
+                    <div class="clan-item flex flex-gap-10">
+                        <img class="clan-emblem" [src]="clan.emblems.x195?.portal" alt="{{ clan.name }} emblem">
+                        <div class="clan-info flex-column flex-gap-5">
+                            <span class="name" [style.backgroundColor]="clan.color">{{ clan.name }}</span>
+                            <span class="details">Members: {{ clan.members_count }}</span>
+                        </div>
+                    </div>
+                    <button (click)="selectClan(clan)">Select</button>
+                </div>
+            }
+        </div>
+    }
+</main>

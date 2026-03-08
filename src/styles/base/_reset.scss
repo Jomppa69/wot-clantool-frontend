@@ -1,0 +1,15 @@
+// This file contains the reset mixin, which is used to reset the default styles of the browser and set the base styles for the application.
+
+@mixin reset() {
+    html {
+        background-color: var(--color-main-background);
+        margin: 0;
+
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 500;
+    }
+
+    body {
+        margin: 0;
+    }
+}

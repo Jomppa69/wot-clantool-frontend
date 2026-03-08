@@ -1,0 +1,25 @@
+.app-content-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin-inline: auto;
+
+  .app-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+
+    .app-page-container {
+      display: grid;
+    }
+  }
+}

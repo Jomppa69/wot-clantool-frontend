@@ -1,0 +1,81 @@
+.header-container {
+    background-color: var(--color-header-light);
+    color: var(--color-header);
+    height: 3.5rem;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1500px;
+    height: 100%;
+    color: black;
+}
+
+.title {
+    height: 100%;
+    padding-left: 20px;
+
+    .title-text {
+        background-color: var(--color-header);
+        border-radius: var(--border-radius-max);
+        font-size: var(--font-size-lg);
+        font-weight: bold;
+        padding: 14.5px 20px;
+        
+    }
+}
+
+.navbar {
+    .navbar-link {
+        font-size: var(--font-size-md);
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+ 
+.clan-info-container {
+    //border: 1px solid black;
+    height: 100%;
+    width: 300px;
+}
+
+.clan {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius-max);
+    padding: 0 15px;
+    height: 50px;
+    .clan-emblem {
+        width: 50px;
+        height: 50px;
+    }
+
+    .clan-name {
+        font-size: var(--font-size-md);
+        //font-weight: bold;
+        color: black;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.header-button {
+    height: 60%;
+    border-radius: var(--border-radius-xl);
+    color: black;
+    background-color: var(--color-header);
+    &:hover {
+        background-color: var(--color-header-dark);
+        color: white;
+    }
+}
+
+// .no-clan {
+//     margin-left: 20px;
+// }
