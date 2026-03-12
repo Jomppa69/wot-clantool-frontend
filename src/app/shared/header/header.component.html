@@ -10,15 +10,13 @@
             <span class="navbar-link" (click)="navTo('members')">Members</span>
             <span class="navbar-link" (click)="navTo('tanks')">Tanks</span>
             <span class="navbar-link" (click)="navTo('attendance')">Attendance</span>
-
-
         </div>
 
         <div class="clan-info-container flex align-center-start">
             @if (clanService.clan$ | async; as clan) {
-                <div class="clan flex align-center-start flex-gap-10" [style.backgroundColor]="clan.color">
+                <div class="clan flex align-center-start flex-gap-10" [style.backgroundColor]="clan.color" (click)="navTo('select-clan')">
                     <img class="clan-emblem" [src]="clan.emblems.x195?.portal" alt="{{ clan.name }} emblem">
-                    <span class="clan-name" (click)="navTo('select-clan')">{{ clan.name }}</span>
+                    <span class="clan-name">{{ clan.tag }}</span>
                 </div>
 
             } @else {

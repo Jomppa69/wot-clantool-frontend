@@ -22,6 +22,15 @@ export class HeaderComponent {
             case 'clan':
                 this.router.navigate(['/clan']);
                 break;
+            case 'members':
+                this.router.navigate(['/members']);
+                break;
+            case 'tanks':
+                this.router.navigate(['/tanks']);
+                break;
+            case 'attendance':
+                this.router.navigate(['/attendance']);
+                break;
         }
     }
 }

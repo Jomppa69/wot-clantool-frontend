@@ -3,9 +3,9 @@ import { ENVIRONMENT, Environment } from "../tokens/environment.token";
 
 
 const getClanEndpoints = (baseUrl: string) => ({
-    search: (clanName: string) => `${baseUrl}clan/search`,
-    members: (clanId: number) => `${baseUrl}clan/members`,
-    details: (clanId: number) => `${baseUrl}clan/details`
+    search: (clanName: string) => `${baseUrl}clans`,
+    members: (clanId: number) => `${baseUrl}clans/${clanId}/members`,
+    details: (clanId: number) => `${baseUrl}clans/${clanId}`
 })
 
 const getTankEndpoints = (baseUrl: string) => ({

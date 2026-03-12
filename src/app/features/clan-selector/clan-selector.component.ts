@@ -28,7 +28,7 @@ export class ClanSelectorComponent {
 
     searchClan() {
         if (this.clanName.value !== '' && this.clanName.value !== null) {
-            this.clanService.searchClan(this.clanName.value).subscribe({
+            this.clanService.queryClans(this.clanName.value).subscribe({
                 next: (response) => {
                     console.log('searchClan response', response)
                     this.results = response;
@@ -38,13 +38,8 @@ export class ClanSelectorComponent {
         }
     }
 
-    selectClan(clan: ClanSearchResult) {
-        this.clanService.getClan(clan.clan_id).subscribe({
-            next: (response) => {
-                this.clanService.updateClan(response);
-                console.log(response);
-                this.router.navigate(['/clan']);
-            }
-        })
+    async selectClan(clan: ClanSearchResult) {
+        await this.clanService.setClan(clan.clan_id);
+        this.router.navigate(['/clan']);
     }
 }
