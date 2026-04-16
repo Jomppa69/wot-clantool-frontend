@@ -1,1 +1,28 @@
-<p>members works!</p>
+<div class="members-table">
+        <table mat-table [dataSource]="members" matSort>
+            <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by role">Role</th>
+                <td mat-cell *matCellDef="let member">
+                    <img [src]="'role-icons/' + member.role + '.png'" alt="{{ member.role_i18n }}">
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="account_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Username</th>
+                <td mat-cell *matCellDef="let member">{{ member.account_name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="joined_at">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by join date">Join Date</th>
+                <td mat-cell *matCellDef="let member">{{ member.joined_at | date }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="days_in_clan">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by days in clan">Days in clan</th>
+                <td mat-cell *matCellDef="let member">{{ countDaysInClan(member.joined_at) }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay;"></tr>
+        </table>
+</div>

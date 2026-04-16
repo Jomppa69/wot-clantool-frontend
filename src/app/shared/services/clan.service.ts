@@ -15,7 +15,7 @@ export class ClanService {
 
     constructor() {
         // debug
-        this.getClanDetails(500161363).subscribe({
+        this.clanApiService.fetchClanDetails(500161363).subscribe({
             next: (response) => {
                 this.setClan(response.clan_id);
                 console.log(response)
@@ -24,7 +24,7 @@ export class ClanService {
     }
 
     setClan(clanId: number) {
-        this.getClanDetails(clanId).subscribe({
+        this.clanApiService.fetchClanDetails(clanId).subscribe({
             next: (response) => {
                 this.clan$.next(response)
                 this.setMembers(clanId)
@@ -33,7 +33,7 @@ export class ClanService {
     }
     
     setMembers(clanId: number) {
-        this.getMembers(clanId).subscribe({
+        this.clanApiService.fetchClanMembers(clanId).subscribe({
             next: (response) => {
                 this.members$.next(response)
             }
@@ -42,13 +42,5 @@ export class ClanService {
 
     queryClans(clanName: string) {
         return this.clanApiService.queryClansByName(clanName);
-    }
-
-    getClanDetails(clanId: number) {
-        return this.clanApiService.fetchClanDetails(clanId);
-    }
-
-    getMembers(clanId: number) {
-        return this.clanApiService.fetchClanMembers(clanId);
     }
 }

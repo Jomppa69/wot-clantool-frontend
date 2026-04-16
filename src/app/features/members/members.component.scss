@@ -1,0 +1,39 @@
+.members-table {
+    margin: 5% 3%;
+    border: 7px solid var(--mat-table-background-color);
+    border-radius: var(--border-radius-xl);
+
+    .mat-mdc-header-cell {
+        &:hover {
+            background-color: var(--color-table-light);
+        }
+    }
+
+    .mat-sort-header-sorted {
+        background-color: var(--color-table-light);
+    }
+
+    .mat-column-role {
+        width: 40px;
+        
+        img {
+            padding-left: 2px;
+        }
+    }
+
+    .mat-column-account_name {
+        width: 200px;
+    }
+
+    .mat-column-joined_at {
+        width: 150px;
+    }
+
+    // .mat-column-days_in_clan {
+    //     width: 150px;
+    // }
+
+    .mat-mdc-row:nth-child(even) {
+        background-color: var(--color-table-light);
+    }
+}
