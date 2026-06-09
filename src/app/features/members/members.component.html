@@ -7,14 +7,24 @@
                 </td>
             </ng-container>
             
-            <ng-container matColumnDef="account_name">
+            <ng-container matColumnDef="nickname">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Username</th>
-                <td mat-cell *matCellDef="let member">{{ member.account_name }}</td>
+                <td mat-cell *matCellDef="let member">{{ member.nickname }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="wn8">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by wn8">WN8</th>
+                <td mat-cell *matCellDef="let member" [ngStyle]="{'background-color': getWn8Color(member.wn8)}">{{ member.wn8 | number:'1.0-0' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="winrate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by winrate">WR</th>
+                <td mat-cell *matCellDef="let member" [ngStyle]="{'background-color': getWinrateColor(member.winrate)}">{{ member.winrate }}</td>
             </ng-container>
 
             <ng-container matColumnDef="joined_at">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by join date">Join Date</th>
-                <td mat-cell *matCellDef="let member">{{ member.joined_at | date }}</td>
+                <td mat-cell *matCellDef="let member">{{ member.joined_at * 1000 | date }}</td>
             </ng-container>
 
             <ng-container matColumnDef="days_in_clan">

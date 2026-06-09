@@ -1,22 +1,22 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgStyle, DecimalPipe } from '@angular/common';
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ClanService } from '../../shared/services/clan.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { ClanMember } from '../../shared/types/clan-types';
+import { PlayerDetails } from '../../shared/types/clan-types';
 
 @Component({
   selector: 'app-members',
   standalone: true,
-  imports: [MatTableModule, DatePipe, MatSortModule],
+  imports: [MatTableModule, DatePipe, MatSortModule, NgStyle, DecimalPipe],
   templateUrl: './members.component.html',
   styleUrl: './members.component.scss'
 })
 export class MembersComponent implements OnInit, AfterViewInit {
   readonly clanservice = inject(ClanService);
-  
-  members: MatTableDataSource<ClanMember> = new MatTableDataSource();
-  columnsToDisplay: string[] = ['role','account_name', 'joined_at', 'days_in_clan'];
+
+  members: MatTableDataSource<PlayerDetails> = new MatTableDataSource();
+  columnsToDisplay: string[] = ['role', 'nickname', 'wn8', 'winrate', 'joined_at', 'days_in_clan'];
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -41,7 +41,8 @@ export class MembersComponent implements OnInit, AfterViewInit {
       return (member as any)[column];
     };
     this.clanservice.members$.subscribe(members => {
-      this.members.data = members;
+      const membersMap = Object.values(members)
+      this.members.data = membersMap;
     });
   }
 
@@ -52,11 +53,18 @@ export class MembersComponent implements OnInit, AfterViewInit {
 
   countDaysInClan(joinedAt: number): number {
     const currentDate = new Date();
-    const joinedDate = new Date(joinedAt);
+    const joinedDate = new Date(joinedAt * 1000);
     const timeDifference = currentDate.getTime() - joinedDate.getTime();
     const daysDifference = Math.round(timeDifference / (1000 * 3600 * 24));
     return daysDifference;
   }
 
+  getWinrateColor(winrate: number) {
+    return `var(--color-wr-${winrate.toFixed()})`;
+  }
 
+  getWn8Color(wn8: number) {
+    const roundedWn8 = Math.round(wn8 / 200) * 200
+    return `var(--color-wn8-${roundedWn8.toFixed()})`;
+  }
 }

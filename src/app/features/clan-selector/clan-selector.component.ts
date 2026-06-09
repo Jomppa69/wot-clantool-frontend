@@ -30,7 +30,6 @@ export class ClanSelectorComponent {
         if (this.clanName.value !== '' && this.clanName.value !== null) {
             this.clanService.queryClans(this.clanName.value).subscribe({
                 next: (response) => {
-                    console.log('searchClan response', response)
                     this.results = response;
                 },
                 error: (error) => console.error('searchClan error', error)

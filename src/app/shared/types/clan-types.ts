@@ -22,16 +22,61 @@ export interface ClanSearchResult {
     emblems: ClanEmblems;
 }
 
-export interface ClanMember {
+export interface PlayerClanDetails {
     role: string;
     role_i18n: string;
     joined_at: number;
     account_id: number;
-    account_name: string;
+    clan: {
+        clan_id: number;
+    };
+}
+
+export interface PlayerDetails {
+    role: string;
+    role_i18n: string;
+    joined_at: number;
+    clan_id: number;
+    account_id: number;
+    nickname: string;
+    global_rating: number;
+    last_battle_time: number;
+    vehicle_stats: Record<string, PlayerVehicleDetails>;
+    battles: number;
+    wins: number;
+    losses: number;
+    draws: number;
+    winrate: number;
+    wn8: number;
+}
+
+export type PlayerDetailsMap = Record<string, PlayerDetails>;
+
+export interface PlayerVehicleDetails {
+    tank_id: number;
+    spotted: number;
+    hits_percents: number;
+    track_assisted_damage: number;
+    draws: number;
+    wins: number;
+    losses: number;
+    hits: number;
+    battles: number;
+    dropped_capture_points: number;
+    stun_assisted_damage: number;
+    damage_dealt: number;
+    battle_avg_xp: number;
+    damage_received: number;
+    shots: number;
+    radio_assisted_damage: number;
+    xp: number;
+    frags: number;
+    survived_battles: number;
+    wn8?: number;
 }
 
 export interface Clan {
-    members: ClanMember[];
+    members: PlayerClanDetails[];
     creator_name: string;
     members_count: number;
     description: string | null;

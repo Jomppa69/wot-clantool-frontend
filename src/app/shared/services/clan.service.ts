@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { Clan, ClanMember, ClanSearchResult } from "../types/clan-types";
+import { BehaviorSubject, forkJoin } from "rxjs";
+import { Clan, PlayerClanDetails, PlayerDetailsMap } from "../types/clan-types";
 import { ClanApiService } from "./clan-api.service";
 
 @Injectable({
@@ -11,36 +11,41 @@ export class ClanService {
     private readonly clanApiService = inject(ClanApiService);
 
     clan$ = new BehaviorSubject<Clan | null>(null);
-    members$ = new BehaviorSubject<ClanMember[]>([]);
+    members$ = new BehaviorSubject<PlayerDetailsMap>({});
 
     constructor() {
         // debug
         this.clanApiService.fetchClanDetails(500161363).subscribe({
             next: (response) => {
                 this.setClan(response.clan_id);
-                console.log(response)
             }
         })
     }
 
     setClan(clanId: number) {
         this.clanApiService.fetchClanDetails(clanId).subscribe({
-            next: (response) => {
-                this.clan$.next(response)
-                this.setMembers(clanId)
+            next: (clan) => {
+                this.clan$.next(clan)
             }
-        })
+        });
+
+        // Start loading of full clan member details.
+        this.setMembers(clanId);
     }
-    
-    setMembers(clanId: number) {
-        this.clanApiService.fetchClanMembers(clanId).subscribe({
-            next: (response) => {
-                this.members$.next(response)
-            }
-        })
+
+    getMembers(clanId: number) {
+        return this.clanApiService.fetchClanMembers(clanId);
     }
 
     queryClans(clanName: string) {
         return this.clanApiService.queryClansByName(clanName);
+    }
+
+    setMembers(clanId: number) {
+        this.clanApiService.fetchClanMemberDetails(clanId).subscribe({
+            next: (membersMap) => {
+                this.members$.next(membersMap)
+            }
+        })
     }
 }
