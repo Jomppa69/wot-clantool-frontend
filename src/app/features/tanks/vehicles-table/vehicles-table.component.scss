@@ -1,0 +1,37 @@
+.vehicles-table-container {
+    background-color: var(--color-table);
+    border-radius: var(--border-radius-md);
+}
+
+.table-container {
+    height: 400px;
+    overflow: auto;
+}
+
+.table-title {
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.mat-column-category {
+    mat-form-field {
+        width: 170px !important;
+    }
+}
+
+.mat-mdc-cell.mat-column-name {
+    display: grid;
+    grid-template-columns: 90px 70%;
+    align-items: center;
+    height: 40px;
+
+    span {
+        font-size: var(--font-size-xs);
+    }
+}
+
+
+.mat-mdc-cell.mat-column-nation {
+    padding-left: 29px;
+}

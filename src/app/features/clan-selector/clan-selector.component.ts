@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Clan, ClanSearchResult } from '../../shared/types/clan-types';
 import { Router } from '@angular/router';
 import { ClanService } from '../../shared/services/clan.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'clan-selector',
@@ -14,6 +15,7 @@ import { ClanService } from '../../shared/services/clan.service';
 export class ClanSelectorComponent {
     private readonly clanService = inject(ClanService);
     private readonly router = inject(Router);
+    private readonly destroyRef = inject(DestroyRef);
 
     private clanId: number = 0;
 
@@ -28,12 +30,15 @@ export class ClanSelectorComponent {
 
     searchClan() {
         if (this.clanName.value !== '' && this.clanName.value !== null) {
-            this.clanService.queryClans(this.clanName.value).subscribe({
-                next: (response) => {
-                    this.results = response;
-                },
-                error: (error) => console.error('searchClan error', error)
-            })
+            this.clanService
+                .queryClans(this.clanName.value)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe({
+                    next: (response) => {
+                        this.results = response;
+                    },
+                    error: (error) => console.error('searchClan error', error)
+                })
         }
     }
 

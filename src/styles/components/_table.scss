@@ -1,0 +1,44 @@
+@use '@angular/material' as mat;
+
+@mixin table() {
+    @include mat.table-overrides((
+        row-item-outline-width: 0px,
+        background-color: var(--color-table-light),
+        header-headline-font: 'Courier New',
+        row-item-label-text-font: 'Courier New',
+        footer-supporting-text-font: 'Courier New',
+        header-headline-size: var(--font-size-md),
+        header-container-height: 40px,
+        row-item-container-height: 40px,
+        header-headline-color: black,
+        row-item-label-text-color: black,
+    ));
+
+    table {
+        border-collapse: collapse;
+    }
+
+    .mat-mdc-table {
+        .mat-mdc-row:nth-child(even) {
+            background-color: var(--color-table);
+        }
+    
+        .mat-mdc-header-row {
+            border-bottom: 2px solid var(--color-blue-dark);
+            .mat-mdc-header-cell {
+                &:hover {
+                    background-color: var(--color-blue-dark);
+                }
+                .mat-sort-header-arrow {
+                    color: var(--color-blue-light);
+                }
+            }
+        }
+    
+        .mat-mdc-header-cell:has(.mat-sort-header-sorted) {
+            background-color: var(--color-blue-dark);
+        }
+    }
+
+
+}

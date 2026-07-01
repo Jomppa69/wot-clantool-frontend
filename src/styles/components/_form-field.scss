@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+@mixin form-field() {
+    @include mat.form-field-overrides((
+        container-color: var(--color-blue-dark),
+        container-height: 20px,
+        container-vertical-padding: 0px,
+        container-text-size: var(--font-size-xs),
+    ));
+
+    mat-form-field {
+        .mat-mdc-form-field-subscript-wrapper {
+            display: none !important;
+        }
+
+        .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after{
+            border-bottom-color: var(--color-grey) !important;
+        }
+
+        svg {
+            color: white !important;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.form-row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-left: 8%;
+}
+
+#category-name {
+    width: 72%;
+}
+
+#category-priority {
+    width: 20%;
+    text-align: center;
+}
+
+.form-label {
+    font-weight: 600;
+
+}

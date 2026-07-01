@@ -8,19 +8,19 @@
         flex-direction: column;
     }
 
-    @for $i from 1 through 50 {
+    @for $i from 1 through 100 {
         .flex.flex-gap-#{$i} > *:not(:last-child) {
             margin-right: #{$i}px;
         }
     }
 
-    @for $i from 1 through 50 {
+    @for $i from 1 through 100 {
         .flex-column.flex-gap-#{$i} > *:not(:last-child) {
             margin-bottom: #{$i}px;
         }   
     }
 
-    // This is scuffed!
+    // This is scuffed! Dont remember why, should probably delete it.
     @for $i from 1 through 100 {
         .flex-width-#{$i} {
             width: #{$i} + "%";
@@ -37,9 +37,19 @@
         justify-content: center;
     }
 
+    
     .align-center-space-between {
         align-items: center;
         justify-content: space-between;
     }
-
+    
+    .align-center-space-around {
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .align-start-center {
+        align-items: start;
+        justify-content: center;
+    }
 }

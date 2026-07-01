@@ -1,18 +1,27 @@
 @mixin colors() {
     :root {
-        --color-main-background: #494D5F;
+        // Component colors:
+        // --color-main-background: #494D5F;
+        --color-main-background: #8ccbf0;
         --color-background: #E5EAF5;
-        --color-accent: #A0D2EB;
-        --color-header: #0881c6;
-        --color-header-light: #4195c5;
+        --color-button: var(--color-blue);
+        --color-button-light: var(--color-blue);
+        --color-table: var(--color-blue);
+        --color-table-light: #a1c8dd;
+        --color-header: var(--color-blue);
+        --color-header-light: var(--color-blue);
         --color-header-dark: #0c6497;
 
-        --color-grey-light: #b6b6b6;
-
-        --color-table: #161215;
-        --color-table-light: #292728;
-
-
+        // Color colors
+        --color-blue-light: #6bc1f3;
+        --color-blue: #65b2db;
+        --color-blue-dark: #28678b;
+        --color-grey: #838383;
+        --color-grey-light: #ffffff;
+        --color-grey-dark: #555555;
+        
+        --color-font-darker: #aaaaaa;
+        
         // WN8 colors
         --color-wn8-0: rgb(134, 19, 19);
         --color-wn8-200: rgb(171, 33, 33);
@@ -40,6 +49,16 @@
         --color-wn8-4600: rgb(35, 7, 59);
 
         // Winrate colors
+        --color-wr-30: rgb(134, 19, 19);
+        --color-wr-31: rgb(134, 19, 19);
+        --color-wr-32: rgb(134, 19, 19);
+        --color-wr-33: rgb(134, 19, 19);
+        --color-wr-34: rgb(134, 19, 19);
+        --color-wr-35: rgb(134, 19, 19);
+        --color-wr-36: rgb(134, 19, 19);
+        --color-wr-37: rgb(134, 19, 19);
+        --color-wr-38: rgb(134, 19, 19);
+        --color-wr-39: rgb(134, 19, 19);
         --color-wr-40: rgb(134, 19, 19);
         --color-wr-41: rgb(141, 22, 22);
         --color-wr-42: rgb(164, 30, 30);

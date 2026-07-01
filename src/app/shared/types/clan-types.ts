@@ -72,7 +72,8 @@ export interface PlayerVehicleDetails {
     xp: number;
     frags: number;
     survived_battles: number;
-    wn8?: number;
+    winrate: number;
+    wn8: number;
 }
 
 export interface Clan {

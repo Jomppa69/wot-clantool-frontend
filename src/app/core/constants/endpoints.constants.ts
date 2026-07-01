@@ -10,7 +10,7 @@ const getClanEndpoints = (baseUrl: string) => ({
 })
 
 const getTankEndpoints = (baseUrl: string) => ({
-    tanks: (tier: string) => `${baseUrl}/tanks?tier=${tier}`,
+    tanks: (tier: string) => `${baseUrl}/tanks`,
 })
 
 const getPlayerEndpoints = (baseUrl: string) => ({

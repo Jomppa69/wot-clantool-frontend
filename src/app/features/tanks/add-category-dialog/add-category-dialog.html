@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Add vehicle category</h2>
+<mat-dialog-content class="add-category-dialog">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSave()" #formDir="ngForm" class="flex-column">
+        <label class="form-row" for="category-name">
+            <span class="form-label">Name</span>
+            <input id="category-name" maxlength="17" formControlName="name">
+        </label>
+        <label class="form-row" for="category-priority">
+            <span class="form-label">Priority</span>
+            <input type="number" step="1" id="category-priority" formControlName="priority">
+        </label>
+        @if (formDir.submitted && categoryForm.controls['priority'].hasError('duplicatePriority')) {
+            <div>Priority already exists</div>
+        }
+        @if (formDir.submitted && categoryForm.controls['name'].hasError('required')) {
+            <div>Category name missing</div>
+        }
+
+        <mat-dialog-actions align="end">
+            <button matButton type="submit">Save</button>
+            <button matButton type="button" (click)="onCloseClick()" >Cancel</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

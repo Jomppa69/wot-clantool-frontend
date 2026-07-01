@@ -1,0 +1,34 @@
+    .table-container {
+        height: 780px;
+        overflow: auto;
+    }
+
+    .mat-column-role {
+        width: 40px;
+        
+        img {
+            padding-left: 2px;
+        }
+    }
+
+    .mat-column-nickname {
+        width: 200px;
+    }
+
+    .mat-column-joined_at {
+        width: 150px;
+    }
+
+    .mat-column-wn8, .mat-column-winrate {
+        width: 45px;
+        text-align: center;
+    }
+
+    .mat-mdc-cell.mat-column-wn8, .mat-mdc-cell.mat-column-winrate {
+        color: rgb(37, 37, 37);
+    }
+
+    .mat-column-days_in_clan {
+        width: 150px;
+    }
+

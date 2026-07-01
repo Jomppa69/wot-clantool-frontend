@@ -4,7 +4,11 @@
 @use 'base/font';
 @use 'base/reset';
 @use 'base/variables';
-@use 'components/buttons';
+@use 'components/button';
+@use 'components/dialog';
+@use 'components/table';
+@use 'components/select';
+@use 'components/form-field';
 
 // base styles and variables
 @include colors.colors;
@@ -13,4 +17,8 @@
 @include variables.variables;
 
 // components
-@include buttons.buttons;
+@include button.button;
+@include dialog.dialog;
+@include table.table;
+@include select.select;
+@include form-field.form-field;

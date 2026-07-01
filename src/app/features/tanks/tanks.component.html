@@ -1,1 +1,33 @@
-<p>tanks works!</p>
+<div class="tanks-container flex-column flex-gap-30">
+    <div class="categories-container flex flex-gap-10 flex align-center-start">
+        @for (category of vehicleCategories; track category.name) {
+            <div class="vehicle-category flex-column align-center-start">
+                <span class="category-title">{{ category.name }}</span>
+                <span> {{ 'Priority: ' + category.priority }}</span>
+                <mat-icon class="delete-button" (click)="deleteCategoryClick(category)">close</mat-icon>
+                <div class="vehicle-list flex-column align-center-start">
+                    @for (vehicle of category.vehicles; track vehicle.tank_id) {
+                        <div class="vehicle">
+                            <img [src]="vehicle.images.contour_icon">
+                            <span>{{ vehicle.short_name }}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="new-category-button flex-column align-center-start" (click)="addCategoryClick()">
+            <Span>Add new category</Span>
+            <mat-icon>add_circle_outline</mat-icon>
+        </div>
+    </div>
+    @if (vehiclesLoaded) {
+        <div class="flex-column flex-gap-5">
+            <vehicles-table [vehicles]="vehicles['lightTank']" [title]="'Light tanks'" [categories]="vehicleCategories" [vehicleClanStats]="vehicleClanStats" (categoryChange)="setVehicleCategory($event)"></vehicles-table>
+            <vehicles-table [vehicles]="vehicles['mediumTank']" [title]="'Medium tanks'" [categories]="vehicleCategories" [vehicleClanStats]="vehicleClanStats" (categoryChange)="setVehicleCategory($event)"></vehicles-table>
+            <vehicles-table [vehicles]="vehicles['heavyTank']" [title]="'Heavy tanks'" [categories]="vehicleCategories" [vehicleClanStats]="vehicleClanStats" (categoryChange)="setVehicleCategory($event)"></vehicles-table>
+            <vehicles-table [vehicles]="vehicles['AT-SPG']" [title]="'Tank destroyers'" [categories]="vehicleCategories" [vehicleClanStats]="vehicleClanStats" (categoryChange)="setVehicleCategory($event)"></vehicles-table>
+            <vehicles-table [vehicles]="vehicles['SPG']" [title]="'Artillery'" [categories]="vehicleCategories" [vehicleClanStats]="vehicleClanStats" (categoryChange)="setVehicleCategory($event)"></vehicles-table>
+
+        </div>
+    }
+</div>

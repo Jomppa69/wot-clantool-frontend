@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+
+@mixin dialog() {
+    @include mat.dialog-overrides((
+        container-color: var(--color-background),
+        headline-padding: 0px 14px 6px,
+        container-shape: var(--border-radius-xxl),
+        supporting-text-color: black,
+        subhead-color: black,
+        subhead-font: 'Courier New',
+        supporting-text-font: 'Courier New',
+        subhead-size: var(--font-size-xxl),
+        actions-padding: 0px 0px,
+    ));
+
+    // 
+    .mat-mdc-dialog-container .mat-mdc-dialog-title + .mat-mdc-dialog-content {
+        margin: 10px 12px 0px 24px !important;
+    }
+
+    .backdropBackground {
+        background-color: rgba(32, 32, 32, 0.45);
+        backdrop-filter: blur(1px);
+    }
+
+    mat-dialog-container {
+        .mat-mdc-dialog-title {
+            border-bottom: 1px solid black;
+            background-color: var(--color-header-light);
+            font-variant: small-caps;
+        }
+
+        mat-dialog-content {
+            padding: 10px 12px 0px 24px;
+        }
+    }
+
+    mat-dialog-actions {
+        button:not(:last-child){
+            margin-right: 10px;
+        }
+    }
+}

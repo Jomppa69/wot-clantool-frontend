@@ -1,11 +1,10 @@
-@mixin buttons() {
+@mixin button() {
     button {
         color: white;
         font-weight: bold;
-        background-color: var(--color-header);
+        background-color: var(--color-button);
         &:hover {
-            background-color: var(--color-header-light);
-            color: rgb(73, 73, 73);
+            background-color: var(--color-button-light);
         }
         border: none;
         border-radius: var(--border-radius-md);

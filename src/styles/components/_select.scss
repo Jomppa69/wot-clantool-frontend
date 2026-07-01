@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+
+@mixin select() {
+    @include mat.select-overrides((
+        panel-background-color: var(--color-blue),
+        trigger-text-font: 'Courier New',
+    ));
+    
+    .mat-mdc-select-panel {
+        padding: 0 0 2px 0 !important;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+    }
+
+    mat-select {
+        .mat-mdc-select-value {
+            font-size: var(--font-size-sm);
+        }
+    }
+    
+    mat-option {
+        color: white !important;
+        font-family: 'Courier New' !important;
+        font-size: var(--font-size-sm) !important;
+        height: 25px !important;
+        min-height: 0px !important;
+
+
+        &.mat-mdc-option-active{
+            background-color: var(--color-blue-dark) !important;
+            .mdc-list-item__primary-text {
+                color: white !important;
+            }
+        }
+    
+        &.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+            background-color: var(--color-blue-dark);
+        }
+
+        mat-pseudo-checkbox {
+            display: none !important;
+        }
+    }
+}
